@@ -1,81 +1,81 @@
 # Traveling Salesman Problem
 
-Да се реши задачата за **търговския пътник (Traveling Salesman Problem, TSP)** чрез използване на **генетичен алгоритъм (Genetic Algorithm, GA)**.
+Solve the **Traveling Salesman Problem (TSP)** using a **Genetic Algorithm (GA)**.
 
-Целта е да се намери **възможно най-краткият маршрут**, който:
-- минава през **всички точки точно по веднъж**;
-- между всяка двойка точки **съществува път**;
-- началната точка **няма значение** – **не е необходимо** маршрутът да се връща в изходната позиция.
+The goal is to find the **shortest possible route** that:
+- passes through **all points exactly once**;
+- a **path exists** between every pair of points;
+- the starting point **does not matter** – it is **not necessary** for the route to return to the starting position.
 
 ---
 
-## Вход
+## Input
 
-Едно от следните:
+One of the following:
 
-1. **Случаен набор от точки**  
-   - Цяло число `N` (`N ≤ 100`)  
-   - Генерират се `N` **произволни точки в равнината**.
+1. **Random set of points**  
+   - An integer `N` (`N ≤ 100`)  
+   - Generate `N` **random points in the plane**.
 
-2. **Именуван набор от данни**  
-   - Низ (име на набор от данни), съдържащ букви (може и цифри)  
-   - Последвано от броя градове  
-   - Следват редове от вида:
+2. **Named dataset**  
+   - A string (dataset name) containing letters (and possibly digits)  
+   - Followed by the number of cities  
+   - Followed by lines of the form:
      ```text
-     <име_на_град> X Y
+     <city_name> X Y
      ```
 
 ---
 
-## Изход
+## Output
 
-1. **Първи блок** – поне **10 стойности**, по **една на ред**:  
-   - текущо **най-добрата дължина на пътя** в популацията:
-     - първо поколение
-     - поне осем междинни поколения
-     - последно поколение
+1. **First block** – at least **10 values**, **one per line**:  
+   - the current **best path length** in the population:
+     - first generation
+     - at least eight intermediate generations
+     - last generation
 
-2. **Празен ред**.
+2. **Empty line**.
 
-3. **Най-доброто намерено решение**:
+3. **Best found solution**:
 
-   - При **N случайни точки**:  
-     - само **финалната дължина** (една стойност),  
-       равна на **последната** от горния блок.
+   - For **N random points**:  
+     - only the **final length** (one value),  
+       equal to the **last** value from the block above.
 
-   - При **именован набор**:
-     - един ред с маршрута, например:  
+   - For a **named dataset**:
+     - one line with the route, for example:  
        ```text
        CityA -> CityB -> ... -> CityZ
        ```
-     - следван от ред с **финалната дължина**.
+     - followed by a line with the **final length**.
 
-> Финалната дължина трябва да:
-> - съвпада с **последната** стойност от първия блок;
-> - съвпада с **преизчислената дължина** на маршрута.
+> The final length must:
+> - match the **last** value from the first block;
+> - match the **recalculated length** of the route.
 
 ---
 
-## Бележки
+## Notes
 
-- За случай 2 (именуван набор) се очаква **достигане до оптимума** в повечето изпълнения  
-  (поне **8 от 10**), с малка толерантност за **плаваща точка**.
+- For case 2 (named dataset) it is expected to **reach the optimum** in most runs  
+  (at least **8 out of 10**), with small tolerance for **floating point**.
 
-- Решението трябва да работи **в рамките на секунди**, дори при по-големи входове.
+- The solution should work **within seconds**, even for larger inputs.
 
-- Да се предвиди опция за **измерване и отпечатване на времето** за намиране на решението  
-  (повече подробности са налични в секцията „Автоматично тестване“).
+- Provide an option to **measure and print the time** to find the solution  
+  (more details are available in the "Automated Testing" section).
 
-- За примерен набор от градове можете да използвате файловете:
+- For a sample set of cities you can use the files:
   - `uk12_name.csv`
   - `uk12_xy.csv`  
-  от архива `UK_TSP.zip`.
+  from the `UK_TSP.zip` archive.
 
-- Оптималното решение за набора **UK12** има дължина:
+- The optimal solution for the **UK12** dataset has length:
   ```text
   1595.738522033024
   ```
-  ## Примерен вход
+  ## Sample Input
   ```text
   UK12
   12
@@ -83,7 +83,7 @@
   ...
   Stratford 217.343 -447.089
   ```
-  ## Примерен изход
+  ## Sample Output
   ```text
   2426.8086
   ...

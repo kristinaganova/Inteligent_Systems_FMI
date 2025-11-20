@@ -1,55 +1,55 @@
 # Knapsack Problem
 
-Да се реши задачата за **раница (Knapsack Problem, KP)** чрез използване на **генетичен алгоритъм (Genetic Algorithm, GA)**.
+Solve the **Knapsack Problem (KP)** using a **Genetic Algorithm (GA)**.
 
-Целта е да се избере **подмножество от предмети** с **максимална стойност**, така че:
-- **общото тегло** да **не надвишава вместимостта** на раницата.
+The goal is to select a **subset of items** with **maximum value** such that:
+- the **total weight** does **not exceed the capacity** of the knapsack.
 
 ---
 
-## Вход
+## Input
 
-- Един ред с две цели числа:
+- One line with two integers:
   ```text
   M N
   ```
-където:
-•	M – вместимост на раницата
-•	N – брой предмети
-•	Следват N реда с по две цели числа:
+where:
+•	M – knapsack capacity
+•	N – number of items
+•	Followed by N lines with two integers each:
 
   ```text
 mi ci
   ```
-където:
-	•	mi – тегло на i-тия предмет
-	•	ci – стойност на i-тия предмет
+where:
+	•	mi – weight of the i-th item
+	•	ci – value of the i-th item
 
-Изход
-	1.	Първи блок – поне 10 стойности, по една на ред:
-	  -	текущо най-добрата стойност в популацията:
-	  -	първо поколение
-	  -	поне осем междинни
-	  -	последно поколение
-	2.	Празен ред.
-	3.	Финална максимална стойност (една стойност), равна на последната от горния блок.
+## Output
+	1.	First block – at least 10 values, one per line:
+	  -	the current best value in the population:
+	  -	first generation
+	  -	at least eight intermediate generations
+	  -	last generation
+	2.	Empty line.
+	3.	Final maximum value (one value), equal to the last value from the block above.
 
-⸻
+---
 
-## Бележки
-	-	Очаква се достигане до оптимума в повечето изпълнения (поне 8 от 10).
-	-	Решението трябва да работи в рамките на секунди,дори за големи входове (N ≤ 10 000).
-	-	Да се предвиди опция за измерване и отпечатване на времето за намиране на решението 
+## Notes
+	-	It is expected to reach the optimum in most runs (at least 8 out of 10).
+	-	The solution should work within seconds, even for large inputs (N ≤ 10,000).
+	-	Provide an option to measure and print the time to find the solution.
 
-Първият ред във всеки файл съдържа максималната вместимост и броя на предметите.
+The first line in each file contains the maximum capacity and the number of items.
 
-## Примерни оптимални стойности:
-	-	„Къс“ набор:
-	-	вместимост: 5000
-	-	брой предмети: 24
-	-	оптимум: 1130
-	-	„Дълъг“ набор:
-	-	вместимост: 5000
-	-	брой предмети: 200
-	-	оптимум: 5119
+## Sample Optimal Values:
+	-	"Short" dataset:
+	-	capacity: 5000
+	-	number of items: 24
+	-	optimum: 1130
+	-	"Long" dataset:
+	-	capacity: 5000
+	-	number of items: 200
+	-	optimum: 5119
 

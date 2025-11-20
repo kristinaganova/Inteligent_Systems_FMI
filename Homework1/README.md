@@ -1,53 +1,53 @@
-# Пъзел с жаби
+# Frog Puzzle
 
-Играта разполага с игрално поле от `2N + 1` полета.  
-В началото:
+The game has a playing field of `2N + 1` squares.  
+Initially:
 
-- в **най-десните N полета** имаме разположени жаби, гледащи **наляво** (`<`)
-- в **най-левите N полета** имаме разположени жаби, гледащи **надясно** (`>`)
+- in the **rightmost N squares** we have frogs placed facing **left** (`<`)
+- in the **leftmost N squares** we have frogs placed facing **right** (`>`)
 
-Целта на играта е жабите да си **разменят местата** и да се стигне до **противоположната конфигурация**.
-
----
-
-## Правила на играта
-
-- Всяка жаба може да се движи **само в посоката, в която гледа**.
-- Всяка жаба може:
-  - да **скочи на свободно място** (`_`) пред себе си, или
-  - да **прескочи една жаба** (независимо в каква посока гледа тя), за да отиде на **празно място** пред себе си.
+The goal of the game is for the frogs to **swap places** and reach the **opposite configuration**.
 
 ---
 
-## Задача
+## Game Rules
 
-Използвайте **търсене в дълбочина (DFS)**, за да реализирате програма, решаваща пъзела.
-
-### Вход
-
-- Цяло число `N` – броят на жабите, гледащи в една посока.
-
-### Изход
-
-- Всички конфигурации, през които се минава, за да се стигне **от началното до финалното състояние** (т.е. **стъпките за решаване на пъзела**), всяка на отделен ред.
+- Each frog can only move **in the direction it is facing**.
+- Each frog can:
+  - **jump to an empty space** (`_`) in front of it, or
+  - **jump over one frog** (regardless of which direction it is facing) to land on an **empty space** in front of it.
 
 ---
 
-## Ограничения и бележки
+## Task
 
-- Задачата се очаква да върви с вход `N = 20` за **под 1 секунда**.
-- Задачата може да бъде решена и за **линейно време** чрез подход, основан на **правила** (без пълно търсене).  
-  Можете да се опитате да я решите и по този начин като алтернативно решение.
+Use **Depth-First Search (DFS)** to implement a program that solves the puzzle.
+
+### Input
+
+- An integer `N` – the number of frogs facing in one direction.
+
+### Output
+
+- All configurations that are traversed to go **from the initial to the final state** (i.e. **the steps to solve the puzzle**), each on a separate line.
 
 ---
 
-## Пример
+## Constraints and Notes
 
-### Примерен вход
+- The task is expected to work with input `N = 20` in **under 1 second**.
+- The task can also be solved in **linear time** using a **rule-based** approach (without full search).  
+  You may try to solve it this way as an alternative solution.
+
+---
+
+## Example
+
+### Sample Input
 ```text
 2
 ```
-### Примерен изход
+### Sample Output
 ```text
 >>_<<
 >_><<

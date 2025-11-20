@@ -1,13 +1,13 @@
-# Морски шах
+# Tic-Tac-Toe
 
-Задачата е да се реализира **детерминистичен агент** за игра на **морски шах (Tic-Tac-Toe)**, който играе **оптимално**, като използва алгоритъма **Minimax с α–β отсичане**.
+The task is to implement a **deterministic agent** for playing **Tic-Tac-Toe** that plays **optimally**, using the **Minimax algorithm with α–β pruning**.
 
-Програмата поддържа два режима на работа:
+The program supports two operating modes:
 
-- `JUDGE` – използва се от инструмента за тестване (**задължителен**).
-- `GAME` – интерактивна игра човек–компютър (за локални експерименти и демонстрации, **също задължителен**).
+- `JUDGE` – used by the testing tool (**required**).
+- `GAME` – interactive human–computer game (for local experiments and demonstrations, **also required**).
 
-Всички дъски се отпечатват в **„рамкиран“ вид** (3×3), например:
+All boards are printed in **"framed" format** (3×3), for example:
 
 ```text
 +---+---+---+
@@ -19,39 +19,39 @@
 +---+---+---+
 ```
 
-Символът `_` означава празна клетка.
+The symbol `_` represents an empty cell.
 
-Първият ред на стандартния вход винаги указва режима: **JUDGE** или **GAME**.
+The first line of standard input always indicates the mode: **JUDGE** or **GAME**.
 
 ---
 
-## Режим JUDGE
+## JUDGE Mode
 
-### Вход
+### Input
 
 ...
 JUDGE  
-TURN X        # или TURN O  
-<дъска 3×3 в рамкиран вид – точно 7 реда>  
+TURN X        # or TURN O  
+<3×3 board in framed format – exactly 7 lines>  
 ...
 
-### Изход (приеман от инструмента за тестване)
+### Output (accepted by the testing tool)
 
-- За **нетерминални позиции**: избраният ход — две цели числа (1-базирано):
+- For **non-terminal positions**: the chosen move — two integers (1-based):
 
 ...
 row col  
 ...
 
-където `row ∈ {1,2,3}`, `col ∈ {1,2,3}`.
+where `row ∈ {1,2,3}`, `col ∈ {1,2,3}`.
 
-- За **терминални позиции**:
+- For **terminal positions**:
 
 ...
 -1  
 ...
 
-### Примерен вход
+### Sample Input
 
 ```text
 JUDGE  
@@ -65,7 +65,7 @@ TURN X
 +---+---+---+  
 ```
 
-### Примерен изход
+### Sample Output
 
 ```text
 2 2  
@@ -73,29 +73,29 @@ TURN X
 
 ---
 
-## Режим GAME
+## GAME Mode
 
-### Вход
+### Input
 
 ```text
 GAME  
-FIRST X       # кой започва  
-HUMAN O       # коя страна е човекът  
-<дъска 3×3 начална позиция>  
+FIRST X       # who starts  
+HUMAN O       # which side is the human  
+<3×3 initial board position>  
 ```
 
-### Изисквания към програмата
+### Program Requirements
 
-1. Прочита началната дъска.
-2. Определя кой е човек и кой е агент според `FIRST` и `HUMAN`.
-3. Докато играта не е терминална:
-   - **Ако е на ход човекът**:
-     - прочита два цели числа `row col`
-     - прилага хода, ако е валиден
-   - **Ако е на ход агентът**:
-     - намира оптимален ход чрез **Minimax с α–β отсичане**
-     - прилага хода
-   - След всеки ход отпечатва актуализираната дъска:
+1. Read the initial board.
+2. Determine who is human and who is the agent according to `FIRST` and `HUMAN`.
+3. While the game is not terminal:
+   - **If it's the human's turn**:
+     - read two integers `row col`
+     - apply the move if valid
+   - **If it's the agent's turn**:
+     - find the optimal move using **Minimax with α–β pruning**
+     - apply the move
+   - After each move, print the updated board:
      ```text
      +---+---+---+
      | ... | ... | ... |
@@ -105,7 +105,7 @@ HUMAN O       # коя страна е човекът
      | ... | ... | ... |
      +---+---+---+
      ```
-4. В терминално състояние отпечатва един ред:
+4. In a terminal state, print one line:
    - `WINNER: X`
    - `WINNER: O`
    - `DRAW`

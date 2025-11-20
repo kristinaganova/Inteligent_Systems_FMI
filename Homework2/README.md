@@ -1,35 +1,35 @@
-### Sliding blocks
+### Sliding Blocks
 
-Играта започва с **квадратна дъска**, състояща се от плочки с номера от `1` до `N` и една празна плочка, представена с цифрата `0`.  
-Целта е да се **наредят плочките в съответствие с техните номера**.
+The game starts with a **square board** consisting of tiles numbered from `1` to `N` and one empty tile represented by the digit `0`.  
+The goal is to **arrange the tiles in order according to their numbers**.
 
-Местенето се извършва, като на мястото на празната плочка могат да се преместят плочки:
+Movement is performed by moving tiles into the empty tile position from:
 
-- отгоре  
-- отдолу  
-- отляво  
-- отдясно  
-
----
-
-## Вход
-
-На входа се подава:
-
-1. Число `N` – броят на плочките с номера (например: `8`, `15`, `24`, и т.н.).
-2. Число `I` – индексът на позицията на нулата в решението:  
-   - ако `I = -1` – използва се **индекс по подразбиране**: нулата е **най-долу вдясно**;
-   - в противен случай – използва се подаденият индекс.
-3. Подредбата на дъската – елементи (числа), подадени във вид на квадратна матрица.
+- above  
+- below  
+- left  
+- right  
 
 ---
 
-## Задача
+## Input
 
-С помощта на алгоритъма **IDA\*** и евристиката **„разстояние на Манхатън“** да се изведе:
+The input consists of:
 
-1. На първия ред – **дължината на оптималния път** от началото до целевото състояние.
-2. На следващите редове – съответните **стъпки**, водещи до решението:
+1. Number `N` – the number of numbered tiles (e.g.: `8`, `15`, `24`, etc.).
+2. Number `I` – the index of the zero position in the solution:  
+   - if `I = -1` – use the **default index**: zero is **bottom right**;
+   - otherwise – use the provided index.
+3. The board arrangement – elements (numbers) provided in the form of a square matrix.
+
+---
+
+## Task
+
+Using the **IDA\*** algorithm and the **"Manhattan distance"** heuristic, output:
+
+1. On the first line – the **length of the optimal path** from the start to the goal state.
+2. On the following lines – the corresponding **steps** leading to the solution:
 
    - `left`
    - `right`
@@ -38,17 +38,17 @@
 
 ---
 
-## Бележки
+## Notes
 
-- Не всяка конфигурация на входен пъзел е **решима**.  
-  Проверка за решимост може да бъде извършена по описаните методи на съответния референтен линк.
+- Not every input puzzle configuration is **solvable**.  
+  A solvability check can be performed using the methods described in the corresponding reference link.
 
-- При **четни дъски** и **целево състояние**, в което `0` се намира на **първия индекс**,  
-  правилото за проверка трябва да бъде **модифицирано** спрямо стандартния алгоритъм.
+- For **even boards** and a **goal state** where `0` is at the **first index**,  
+  the check rule must be **modified** from the standard algorithm.
 
-- При **нерешим пъзел** изходът е: -1
+- For an **unsolvable puzzle** the output is: -1
 
-## Примерен вход: 
+## Sample Input: 
 ```text
 8
 -1
@@ -57,7 +57,7 @@
 0 7 8
 ```
 
-## Примерен изход: 
+## Sample Output: 
 ```text
 2
 left

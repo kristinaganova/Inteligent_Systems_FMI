@@ -1,49 +1,49 @@
 ### N-Queens
 
-Задачата **N-Queens** се състои в това да се разположат `N` царици на квадратна шахматна дъска `N x N`, така че да **не се бият** – т.е. да няма повече от една царица в един и същи:
+The **N-Queens** problem consists of placing `N` queens on a square `N x N` chessboard such that they **do not attack each other** – i.e., there is no more than one queen in the same:
 
-- ред  
-- колона  
-- диагонал  
+- row  
+- column  
+- diagonal  
 
-Да се използва алгоритъмът **Min-Conflicts** за намиране на решение.
-
----
-
-## Вход
-
-- Цяло число `N` – броят на цариците (`N ≥ 1`).
+Use the **Min-Conflicts** algorithm to find a solution.
 
 ---
 
-## Изход
+## Input
 
-Масив с позициите на цариците, където:
+- An integer `N` – the number of queens (`N ≥ 1`).
 
-- **индексът** отговаря на **колоната**
-- **стойността** – на **реда**
+---
 
-Пример:
+## Output
 
-За `N = 4` възможен изход е:
+An array with the positions of the queens, where:
+
+- the **index** corresponds to the **column**
+- the **value** corresponds to the **row**
+
+Example:
+
+For `N = 4` a possible output is:
 
 ```text
 [1, 3, 0, 2]
 ```
 
-## Бележки
--	Задачата няма решение за N ∈ {2, 3}.
-- В тези случаи изходът трябва да е: -1
-- Да се предвиди опция за измерване и отпечатване на времето за намиране на решението
-(повече подробности са налични в секцията „Автоматично тестване“).
-- При големи стойности на N не е необходимо да се извежда решението.
-В тези случаи може да се отпечата само времето за изпълнение на алгоритъма
-(повече подробности са налични в секцията „Автоматично тестване“).
-	•	Да се поддържа опция за принтиране на дъската (например чрез флаг или хардкодната настройка):
-	•	Царица: *
-	•	Празна клетка: _
-Всеки ред се извежда на нов ред, клетките се разделят с интервал.
-Примерно извеждане за N = 4:
+## Notes
+-	The problem has no solution for N ∈ {2, 3}.
+- In these cases the output should be: -1
+- Provide an option to measure and print the time to find the solution
+(more details are available in the "Automated Testing" section).
+- For large values of N it is not necessary to output the solution.
+In these cases only the execution time of the algorithm can be printed
+(more details are available in the "Automated Testing" section).
+	•	Support an option for printing the board (for example via a flag or hardcoded setting):
+	•	Queen: *
+	•	Empty cell: _
+Each row is printed on a new line, cells are separated by spaces.
+Example output for N = 4:
 
 ```text
 _ * _ _
