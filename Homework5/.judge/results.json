@@ -1,0 +1,16 @@
+[
+  {
+    "problem": "ttt",
+    "test": "-",
+    "status": "RTE",
+    "time_ms": 0,
+    "time_budget_ms": 0,
+    "tier": "-",
+    "correct": false,
+    "complete": false,
+    "optimal": null,
+    "note": "cannot infer problem for file: ttt; use --problem",
+    "time_alg_ms": null,
+    "time_cal_ms": null
+  }
+]

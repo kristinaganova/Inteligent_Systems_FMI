@@ -1,0 +1,30 @@
+[
+  {
+    "problem": "knapsack",
+    "test": "t01",
+    "status": "OK",
+    "time_ms": 156,
+    "time_budget_ms": 10000,
+    "tier": "fast",
+    "correct": true,
+    "complete": true,
+    "optimal": true,
+    "note": "improvements=1; length=10 (runs: 10/10 OK)",
+    "time_alg_ms": null,
+    "time_cal_ms": 131
+  },
+  {
+    "problem": "knapsack",
+    "test": "t02",
+    "status": "OK",
+    "time_ms": 824,
+    "time_budget_ms": 10000,
+    "tier": "fast",
+    "correct": true,
+    "complete": true,
+    "optimal": true,
+    "note": "improvements=1; length=10 (runs: 10/10 OK)",
+    "time_alg_ms": null,
+    "time_cal_ms": 799
+  }
+]

@@ -1,0 +1,92 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 .SFNS-Semibold;\f1\fnil\fcharset0 .SFNS-Regular;\f2\fnil\fcharset0 Menlo-Bold;
+\f3\fnil\fcharset0 Menlo-Regular;\f4\fnil\fcharset0 HelveticaNeue-Bold;\f5\fnil\fcharset0 .AppleSystemUIFontMonospaced-Regular;
+}
+{\colortbl;\red255\green255\blue255;\red14\green14\blue14;\red34\green255\blue6;\red0\green0\blue0;
+}
+{\*\expandedcolortbl;;\cssrgb\c6700\c6700\c6700;\cssrgb\c0\c100000\c0;\csgray\c0;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl324\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs24 \cf2 Requirements
+\f1\b0 \
+\pard\tqr\tx100\tx260\li260\fi-260\sl324\slmult1\sb240\partightenfactor0
+\cf2 	\'95	Go 1.20+ (any recent Go should work)\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl324\slmult1\pardirnatural\partightenfactor0
+
+\f0\b \cf2 Build\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f2 \cf3 \CocoaLigature0 go build 9MI0600147.go
+\f3\b0 \cf4 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl324\slmult1\pardirnatural\partightenfactor0
+
+\f0\b \cf2 \CocoaLigature1 Run\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f2 \cf3 \CocoaLigature0 ./9MI0600147 < input.txt
+\f3\b0 \cf4 \
+\
+or \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl324\slmult1\pardirnatural\partightenfactor0
+
+\f0\b \cf2 \CocoaLigature1 Input format (from STDIN)
+\f1\b0 \
+\
+The program expects 
+\f4\b \cf2 three things
+\f1\b0 \cf2  in this order, separated by spaces/newlines:\
+\pard\tqr\tx280\tx440\li440\fi-440\sl324\slmult1\sb240\partightenfactor0
+\cf2 	1.	
+\f5 N
+\f1  \'97 total number of 
+\f4\b numbered
+\f1\b0  tiles (the board is 
+\f5 k x k
+\f1  where 
+\f5 k = sqrt(N+1)
+\f1 ).\
+\pard\tqr\tx500\tx660\li660\fi-660\sl324\slmult1\sb240\partightenfactor0
+\cf2 	\'95	Example: for a 3x3 board, 
+\f5 N = 8
+\f1 ; for 4x4, 
+\f5 N = 15
+\f1 .\
+\pard\tqr\tx280\tx440\li440\fi-440\sl324\slmult1\sb240\partightenfactor0
+\cf2 	2.	
+\f5 I
+\f1  \'97 the 
+\f4\b target index
+\f1\b0  (0-based) where the blank 
+\f5 0
+\f1  should be in the 
+\f4\b goal
+\f1\b0  configuration.\
+\pard\tqr\tx500\tx660\li660\fi-660\sl324\slmult1\sb240\partightenfactor0
+\cf2 	\'95	If 
+\f5 I
+\f1  is out of range, the blank\'92s goal position defaults to the 
+\f4\b last cell
+\f1\b0 .\
+\pard\tqr\tx280\tx440\li440\fi-440\sl324\slmult1\sb240\partightenfactor0
+\cf2 	3.	
+\f5 tiles
+\f1  \'97 a flat list of 
+\f5 N+1
+\f1  integers describing the 
+\f4\b starting
+\f1\b0  board, row-major.\
+\pard\tqr\tx500\tx660\li660\fi-660\sl324\slmult1\sb240\partightenfactor0
+\cf2 	\'95	It must contain all values 
+\f5 0..N
+\f1  exactly once; 
+\f5 0
+\f1  is the blank.
+\f3 \cf4 \CocoaLigature0 \
+}
