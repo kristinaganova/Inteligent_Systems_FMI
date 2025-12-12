@@ -230,9 +230,8 @@ func dfs(start Puzzle, goal GoalInfo, gCost int, limit int, lastMove Move, path 
 		if found {
 			return true, nextLimit
 		}
-		if nextLimit < minExcess {
-			minExcess = nextLimit
-		}
+
+		minExcess = min(minExcess, nextLimit)
 		*path = (*path)[:len(*path)-1]
 	}
 	return false, minExcess

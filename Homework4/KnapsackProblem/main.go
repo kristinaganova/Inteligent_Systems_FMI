@@ -181,7 +181,7 @@ func (ks *KnapsackSolver) Run(eliteSize, tournamentSize int) Candidate {
 }
 
 func main() {
-	rand.Seed(time.Now().UnixNano())
+	rand.NewSource(time.Now().UnixNano())
 
 	measureTime := flag.Bool("time", false, "print elapsed time to stderr")
 	flag.Parse()
