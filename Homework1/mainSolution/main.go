@@ -23,9 +23,10 @@ func createState(n int, a, b byte) []byte {
 func inversions(state []byte) int {
 	seenR, inv := 0, 0
 	for _, ch := range state {
-		if ch == '>' {
+		switch ch {
+		case '>':
 			seenR++
-		} else if ch == '<' {
+		case '<':
 			inv += seenR
 		}
 	}
