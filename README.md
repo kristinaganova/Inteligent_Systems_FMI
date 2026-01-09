@@ -80,6 +80,29 @@ Implement an optimal AI agent for playing Tic-Tac-Toe that never loses.
 
 ---
 
+### Homework 7: Naive Bayes Classifier on Congressional Voting Records
+**Algorithm:** Categorical Naive Bayes with Laplace Smoothing
+
+Classifies members of the U.S. House of Representatives as **democrats** or **republicans** based on **16 voting attributes** from the Congressional Voting Records dataset.
+
+- **Implementation:** Go
+- **Key Concepts:** Probabilistic classification, Laplace smoothing, handling missing values, log-probabilities
+- **Special Handling:** Two modes for `?` values (as a third category vs. imputation) and model selection via cross-validation over different \(\lambda\) values
+- [View Details](Homework7/README.md)
+
+---
+
+### Homework 8: Decision Tree (ID3) on Breast Cancer Dataset
+**Algorithm:** Decision Tree (ID3) with Pre- and Post-Pruning
+
+Builds an ID3 decision tree on the UCI **Breast Cancer** dataset, with configurable pre-pruning (depth, minimum samples, minimum information gain) and optional reduced error post-pruning.
+
+- **Implementation:** Python
+- **Key Concepts:** Entropy, information gain, overfitting control (pre- and post-pruning), stratified cross-validation
+- [View Details](Homework8/README.md)
+
+---
+
 ## Technologies
 
 - **Language:** Go (Golang)
