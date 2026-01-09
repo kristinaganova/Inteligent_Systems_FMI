@@ -244,22 +244,25 @@ func main() {
 		return
 	}
 
-	if timeOnly {
-		elapsed := time.Since(start)
-		fmt.Printf("# TIMES_MS: alg=%d\n", elapsed.Milliseconds())
-		return
-	}
-
 	s := newSolver(n)
 	sol := s.solve()
+	elapsed := time.Since(start)
 	if sol == nil {
-		fmt.Println(-1)
+		if timeOnly {
+			fmt.Printf("# TIMES_MS: alg=%d\n", elapsed.Milliseconds())
+		} else {
+			fmt.Println(-1)
+		}
 		return
 	}
 
-	if *boardFlag {
-		printBoard(sol)
+	if timeOnly {
+		fmt.Printf("# TIMES_MS: alg=%d\n", elapsed.Milliseconds())
 	} else {
-		printArray(sol)
+		if *boardFlag {
+			printBoard(sol)
+		} else {
+			printArray(sol)
+		}
 	}
 }
