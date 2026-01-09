@@ -96,7 +96,7 @@ func (tsp *TravelingSalesmanProblem) crossover(parent1, parent2 Genome) []Genome
 	if n == 0 {
 		return []Genome{{}, {}}
 	}
-	// Ordered crossover (OX)
+
 	i := rand.Intn(n)
 	j := rand.Intn(n)
 	if i > j {
@@ -108,7 +108,7 @@ func (tsp *TravelingSalesmanProblem) crossover(parent1, parent2 Genome) []Genome
 		child1Route[idx] = -1
 		child2Route[idx] = -1
 	}
-	// copy slice
+
 	for idx := i; idx <= j; idx++ {
 		child1Route[idx] = parent1.Route[idx]
 		child2Route[idx] = parent2.Route[idx]
@@ -126,7 +126,6 @@ func (tsp *TravelingSalesmanProblem) crossover(parent1, parent2 Genome) []Genome
 			if already {
 				continue
 			}
-			// find next empty slot
 			for child[pos] != -1 {
 				pos = (pos + 1) % n
 			}
@@ -198,18 +197,16 @@ func (tsp *TravelingSalesmanProblem) evolvePopulationWithElitism(eliteCount int)
 	})
 }
 
-func (tsp *TravelingSalesmanProblem) runAndLogEvolution() Genome {
+func (tsp *TravelingSalesmanProblem) runEvolution() (Genome, []float64) {
+	bestDistances := make([]float64, 0, tsp.Generations+1)
+	bestDistances = append(bestDistances, tsp.Population[0].Distance)
+
 	for i := 0; i < tsp.Generations; i++ {
 		tsp.evolvePopulationWithElitism(2)
-
-		if i%100 == 0 {
-			fmt.Printf("Generation %d: Best Distance = %f\n", i, tsp.Population[0].Distance)
-		}
+		bestDistances = append(bestDistances, tsp.Population[0].Distance)
 	}
-	fmt.Println(tsp.Population[0].Distance)
-	fmt.Println()
 
-	return tsp.Population[0]
+	return tsp.Population[0], bestDistances
 }
 
 func loadFiles(cities *[]City, fileNamesPath, fileCoordinatesPath string) error {
@@ -284,6 +281,8 @@ func generateRandomCities(cities *[]City, count int) {
 func main() {
 	rand.Seed(time.Now().UnixNano())
 
+	timeOnly := os.Getenv("FMI_TIME_ONLY") == "1"
+
 	reader := bufio.NewReader(os.Stdin)
 	inputLine, _ := reader.ReadString('\n')
 	input := strings.TrimSpace(inputLine)
@@ -314,21 +313,39 @@ func main() {
 
 	tsp := createTravelingSalesmanProblem(cities, 350, 2500, 0.5)
 
-	bestGenome := tsp.runAndLogEvolution()
+	bestGenome, bestDistances := tsp.runEvolution()
 
-	path := make([]string, 0, len(cities))
-	for i := 0; i < len(cities); i++ {
-		currentCity := cities[bestGenome.Route[i]]
-		if input == "UK12" {
-			path = append(path, currentCity.Name)
-		} else {
-			path = append(path, fmt.Sprintf("(%f, %f)", currentCity.X, currentCity.Y))
-		}
+	elapsed := time.Since(startTime)
+
+	if timeOnly {
+		fmt.Printf("# TIMES_MS: alg=%d\n", elapsed.Milliseconds())
+		return
 	}
 
-	fmt.Println(strings.Join(path, " -> "))
-	fmt.Println(bestGenome.Distance)
+	distFormat := "%.4f"
+	if input == "UK12" {
+		distFormat = "%.12f"
+	}
 
-	elapsed := time.Since(startTime).Seconds()
-	fmt.Printf("%.2f\n", elapsed)
+	numSamples := 10
+	if len(bestDistances) < numSamples {
+		numSamples = len(bestDistances)
+	}
+	for i := 0; i < numSamples; i++ {
+		idx := int(math.Round(float64(i) * float64(len(bestDistances)-1) / float64(numSamples-1)))
+		fmt.Printf(distFormat+"\n", bestDistances[idx])
+	}
+	fmt.Println()
+
+	if input == "UK12" {
+		path := make([]string, 0, len(cities))
+		for i := 0; i < len(cities); i++ {
+			currentCity := cities[bestGenome.Route[i]]
+			path = append(path, currentCity.Name)
+		}
+		fmt.Println(strings.Join(path, " -> "))
+		fmt.Printf(distFormat+"\n", bestGenome.Distance)
+	} else {
+		fmt.Printf("%.4f\n", bestGenome.Distance)
+	}
 }
