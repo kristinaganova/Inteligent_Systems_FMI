@@ -1,2 +1,0 @@
-problem,test,status,time_ms,time_budget_ms,tier,correct,complete,optimal,time_alg_ms,time_cal_ms,note
-n-puzzle,-,NOENTRY,0,0,slow,false,false,,,,no entrypoint
