@@ -114,44 +114,57 @@ func StratifiedSplit(dataset *Dataset, testSize float64, seed int64) (*Dataset, 
 	r := rand.New(rand.NewSource(seed))
 
 	classGroups := make(map[string][]Point)
-	for _, point := range dataset.Points {
-		classGroups[point.Class] = append(classGroups[point.Class], point)
+	for _, p := range dataset.Points {
+		classGroups[p.Class] = append(classGroups[p.Class], p)
 	}
 
-	trainPoints := make([]Point, 0)
+	trainPoints := make([]Point, 0, len(dataset.Points))
 	testPoints := make([]Point, 0)
 
-	// Sort class names for deterministic iteration order
 	classNames := make([]string, 0, len(classGroups))
-	for className := range classGroups {
-		classNames = append(classNames, className)
+	for c := range classGroups {
+		classNames = append(classNames, c)
 	}
 	sort.Strings(classNames)
 
-	for _, className := range classNames {
-		points := classGroups[className]
+	for _, c := range classNames {
+		points := classGroups[c]
+
 		shuffled := make([]Point, len(points))
 		copy(shuffled, points)
 		r.Shuffle(len(shuffled), func(i, j int) {
 			shuffled[i], shuffled[j] = shuffled[j], shuffled[i]
 		})
 
-		nTest := int(float64(len(shuffled)) * testSize)
-		if nTest < 1 {
+		n := len(shuffled)
+
+		// If a class has only 1 sample, keep it in train to avoid empty train for that class.
+		if n == 1 {
+			trainPoints = append(trainPoints, shuffled[0])
+			continue
+		}
+
+		nTest := int(math.Round(float64(n) * testSize))
+
+		if nTest < 0 {
+			nTest = 0
+		}
+		if nTest > n {
+			nTest = n
+		}
+
+		if testSize > 0 && nTest == 0 {
 			nTest = 1
+		}
+
+		// Ensure at least 1 train sample
+		if nTest >= n {
+			nTest = n - 1
 		}
 
 		testPoints = append(testPoints, shuffled[:nTest]...)
 		trainPoints = append(trainPoints, shuffled[nTest:]...)
 	}
-
-	// Final shuffle with deterministic seed
-	r.Shuffle(len(trainPoints), func(i, j int) {
-		trainPoints[i], trainPoints[j] = trainPoints[j], trainPoints[i]
-	})
-	r.Shuffle(len(testPoints), func(i, j int) {
-		testPoints[i], testPoints[j] = testPoints[j], testPoints[i]
-	})
 
 	return &Dataset{Points: trainPoints}, &Dataset{Points: testPoints}
 }
